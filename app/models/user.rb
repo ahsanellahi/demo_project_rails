@@ -1,11 +1,19 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_one :image, as: :imageable
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :image_attributes
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :confirmable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  # attr_accessible :title, :body
+  has_one :image, as: :imageable, dependent: :destroy
+  accepts_nested_attributes_for :image
+
+  def get_image
+    self.image || self.create_image
+  end
+
+  def get_default_image
+    "/assets/original/default_profile_photo.png"
+  end
 end
