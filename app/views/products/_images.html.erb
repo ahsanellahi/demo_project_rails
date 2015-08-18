@@ -1,0 +1,10 @@
+<%= f.fields_for :images do |image_form| %>
+  <div class="field">
+    <%= image_form.file_field(:photo) %>
+
+    <%= image_tag(image_form.object.photo.url(:thumb)) if image_form.object.photo.present? %>
+    <%= image_form.link_to_remove "Remove" %>
+  </div>
+<% end %>
+
+<p><%= f.link_to_add "Add image", :images %></p>
