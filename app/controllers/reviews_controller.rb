@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @product = Product.find(params[:id])
     @review = Review.new
     respond_with(@review)
   end
@@ -21,9 +22,10 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(params[:review])
+    @product = Product.find(params[:product_id])
+    @review = @product.reviews.build(params[:review])
     @review.save
-    respond_with(@review)
+    respond_with(@product)
   end
 
   def update

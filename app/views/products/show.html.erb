@@ -22,5 +22,9 @@
   <% end %>
 </p>
 
+<%= render 'product_reviews', locals: { product: @product } %>
+
+<%= render '/reviews/form', locals: { product: @product, review: @review } %>
+
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

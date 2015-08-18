@@ -1,0 +1,7 @@
+<% @product.reviews.each do |review| %>
+  <% next if review.new_record? %>
+  <p>
+    <b>Review:</b>
+    <%= review.content %>
+  </p>
+<% end %>
