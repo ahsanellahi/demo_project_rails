@@ -1,10 +1,10 @@
 DemoProject::Application.routes.draw do
-  resources :products
 
+  resources :products
 
   devise_for :users
 
-  # root to: 'users#new'
+  root to: 'products#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
