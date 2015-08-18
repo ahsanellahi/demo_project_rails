@@ -23,9 +23,12 @@ class ReviewsController < ApplicationController
 
   def create
     @product = Product.find(params[:product_id])
-    @review = @product.reviews.build(params[:review])
+    @review = @product.reviews.new(params[:review])
     @review.save
-    respond_with(@product)
+    respond_to do |format|
+      format.html { redirect_to @product}
+      format.js
+    end
   end
 
   def update

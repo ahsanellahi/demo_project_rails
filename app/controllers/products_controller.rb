@@ -9,7 +9,8 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @review = @product.reviews.build
+    @reviews = @product.reviews
+    @review = Review.new
     respond_with(@product)
   end
 
