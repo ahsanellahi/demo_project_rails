@@ -36,9 +36,8 @@ gem 'jquery-rails'
 # gem 'capistrano'
 group :development do
   gem 'hirb'
-  # bundler requires these gems in development
-  # gem 'rails-footnotes'
 end
 # To use debugger
 # gem 'debugger'
 gem "nested_form"
+gem 'kaminari'
