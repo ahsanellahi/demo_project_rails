@@ -6,6 +6,8 @@ DemoProject::Application.routes.draw do
 
   devise_for :users
 
+  get "users/dashboard"
+
   root to: 'products#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
