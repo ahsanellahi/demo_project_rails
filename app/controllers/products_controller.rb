@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_filter :set_product, only: [:show, :edit, :update, :destroy]
+  before_filter :product_owner, only: [:show]
 
   respond_to :html
 
@@ -42,5 +43,9 @@ class ProductsController < ApplicationController
   private
     def set_product
       @product = Product.find(params[:id])
+    end
+
+    def product_owner
+      @owner = @product.user
     end
 end
