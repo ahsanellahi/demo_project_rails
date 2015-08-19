@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_filter :set_review, only: [:show, :edit, :update, :destroy]
+  before_filter :set_product
 
   respond_to :html
 
@@ -13,7 +14,6 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @product = Product.find(params[:id])
     @review = Review.new
     respond_with(@review)
   end
@@ -22,8 +22,8 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @product = Product.find(params[:product_id])
     @review = @product.reviews.new(params[:review])
+    @review.user = current_user
     @review.save
     respond_to do |format|
       format.html { redirect_to @product}
@@ -44,5 +44,9 @@ class ReviewsController < ApplicationController
   private
     def set_review
       @review = Review.find(params[:id])
+    end
+
+    def set_product
+      @product = Product.find(params[:product_id])
     end
 end
