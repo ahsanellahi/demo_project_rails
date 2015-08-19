@@ -1,2 +1,30 @@
-<h1>User#Dashboard</h1>
-<p><%= @user.email %></p>
+<h1><%= @user.email %></h1>
+<div>
+  <p><strong>********Products*********</strong></p>
+  <% @products.each do |product| %>
+    <p>
+      <b>Title:</b>
+      <%= product.title %> |
+
+      <b>Body:</b>
+      <%= product.body %> |
+
+      <b>Price:</b>
+      <%= product.price %> |
+
+      <b>Images</b>
+      <% product.images.each do |img| %>
+        <%= image_tag img.photo.url(:thumb) %>
+      <% end %>
+    </p>
+  <% end %>
+</div>
+<div>
+  <% if is_owner_and_signed_in? @user %>
+    <p><strong>********Reviews*********</strong></p>
+    <% @reviews.each do |review| %>
+      <%= render 'reviews/review', review: review %>
+      on Product <%= link_to review.product.title, review.product %>
+    <% end %>
+  <% end %>
+</div>
