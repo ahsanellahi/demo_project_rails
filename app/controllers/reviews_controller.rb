@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_filter :set_review, only: [:show, :edit, :update, :destroy]
   before_filter :set_product
+  before_filter :validate_before_destroy, only: :destroy
 
   respond_to :html
 
@@ -55,5 +56,9 @@ class ReviewsController < ApplicationController
 
     def set_product
       @product = Product.find(params[:product_id])
+    end
+
+    def validate_before_destroy
+      return false unless current_user == @review.user || current_user == @product.user
     end
 end
