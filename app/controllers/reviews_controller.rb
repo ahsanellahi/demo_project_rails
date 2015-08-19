@@ -34,12 +34,18 @@ class ReviewsController < ApplicationController
 
   def update
     @review.update_attributes(params[:review])
-    respond_with(@review)
+    respond_to do |format|
+      format.html { redirect_to @product}
+      format.js
+    end
   end
 
   def destroy
     @review.destroy
-    respond_with(@review)
+    respond_to do |format|
+      format.html { redirect_to @product}
+      format.js
+    end
   end
 
   private

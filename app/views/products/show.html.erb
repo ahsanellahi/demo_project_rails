@@ -22,9 +22,13 @@
   <% end %>
 </p>
 
-<%= render '/reviews/reviews', reviews: @reviews %>
+<%= render '/reviews/reviews', reviews: @reviews, product: @product %>
 
-<%= render '/reviews/form', product: @product, review: @review unless is_owner?(@owner) %>
+<div id="review-update-form"></div>
+
+<div id="review-form">
+  <%= render '/reviews/form', product: @product, review: @review unless is_owner?(@owner) %>
+</div>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

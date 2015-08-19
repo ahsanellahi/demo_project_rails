@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
   attr_accessible :body, :price, :title, :images_attributes
 
   has_many :images, as: :imageable, dependent: :destroy
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   belongs_to :user
 

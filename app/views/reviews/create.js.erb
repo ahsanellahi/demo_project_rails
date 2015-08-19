@@ -1,2 +1,2 @@
-$('#reviews').append("<%= raw escape_javascript(render @review ) %>");
+$('#reviews').append("<%= raw escape_javascript(render @review, product: @product) %>");
 $('#new_review')[0].reset();

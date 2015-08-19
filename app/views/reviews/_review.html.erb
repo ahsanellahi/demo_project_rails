@@ -1,4 +1,8 @@
-<p>
+<p id="review_<%= review.id %>">
   <b>Review:</b>
   <%= review.content %>
+  <% if review_owner? review.user %>
+    <%= link_to "Edit", edit_product_review_path(product, review), remote: true %>
+    <%= link_to "X", [product, review], method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+  <% end %>
 </p>
