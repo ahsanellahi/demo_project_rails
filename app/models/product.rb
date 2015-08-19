@@ -3,8 +3,9 @@ class Product < ActiveRecord::Base
   attr_accessible :body, :price, :title, :images_attributes
 
   has_many :images, as: :imageable, dependent: :destroy
-
   has_many :reviews
+
+  belongs_to :user
 
   accepts_nested_attributes_for :images, allow_destroy: true
 

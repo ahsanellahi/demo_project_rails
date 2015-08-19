@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   has_one :image, as: :imageable, dependent: :destroy
+  has_many :products
+
   accepts_nested_attributes_for :image
 
   def get_image
