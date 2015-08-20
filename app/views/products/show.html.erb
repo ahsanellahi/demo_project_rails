@@ -30,5 +30,5 @@
   <%= render '/reviews/form', product: @product, review: @review unless is_owner?(@owner) %>
 </div>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Edit', edit_product_path(@product) if is_owner_and_signed_in?(@owner) %> |
 <%= link_to 'Back', products_path %>
