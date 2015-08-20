@@ -10,4 +10,8 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :images, allow_destroy: true
 
   scope :ordered, order('created_at DESC')
+
+  def reviews_count
+    reviews.count
+  end
 end

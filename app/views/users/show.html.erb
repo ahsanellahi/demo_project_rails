@@ -22,12 +22,3 @@
     </p>
   <% end %>
 </div>
-<div>
-  <% if is_owner_and_signed_in? @user %>
-    <p><strong>********Reviews*********</strong></p>
-    <% @reviews.each do |review| %>
-      <%= render 'reviews/review', review: review, product: review.product %>
-      on Product <%= link_to review.product.title, review.product %>
-    <% end %>
-  <% end %>
-</div>
