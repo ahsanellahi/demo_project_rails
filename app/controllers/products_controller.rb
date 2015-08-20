@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_filter :set_product, only: [:show, :edit, :update, :destroy]
   before_filter :product_owner, only: [:show]
   before_filter :authenticate_user!, except: [:show, :index]
+  before_filter :authenticate_for_owner, except: [:show, :index]
 
   respond_to :html
 
@@ -48,5 +49,9 @@ class ProductsController < ApplicationController
 
     def product_owner
       @owner = @product.user
+    end
+
+    def authenticate_for_owner
+      redirect_to products_path unless current_user == product_owner
     end
 end

@@ -27,7 +27,7 @@
 <div id="review-update-form"></div>
 
 <div id="review-form">
-  <%= render '/reviews/form', product: @product, review: @review unless is_owner?(@owner) %>
+  <%= render '/reviews/form', product: @product, review: @review unless is_owner_and_signed_in?(@owner) %>
 </div>
 
 <%= link_to 'Edit', edit_product_path(@product) if is_owner_and_signed_in?(@owner) %> |
