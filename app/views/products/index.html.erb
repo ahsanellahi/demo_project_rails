@@ -1,6 +1,29 @@
-<h1>Listing products</h1>
+<div class="row">
+  <div class="page-header"><h1>All Products</h1></div>
+</div>
 
-<%= paginate @products %>
+<div class='row'>
+  <%= paginate @products %>
+</div>
+
+<div class="row">
+  <div class="">
+    <% @products.each do |product| %>
+      <div class="thumbnail">
+        <%= image_tag("default-image.png") %>
+        <div class="caption">
+          <h4><%= product.title %></h4>
+          <h6>$<%= product.price %></h6>
+          <p>Blah Blah Blah</p>
+          <p>
+            <%= link_to "View", product_path(product), class: "btn btn-primary" %>
+            <%= link_to "Order", product_path(product), class: "btn btn-default" %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <table>
   <tr>
