@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  PER_PAGE = 5
+  PER_PAGE = 9
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   attr_accessible :email, :password, :password_confirmation, :remember_me, :image_attributes

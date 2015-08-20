@@ -11,7 +11,11 @@
     <% @products.each do |product| %>
       <div class="col-lg-4">
         <div class="thumbnail">
-          <%= image_tag("default-image.png") %>
+          <% if product.images.first %>
+            <%= image_tag(product.images.first.get_image_url(:original), class: 'img-container') %>
+          <% else %>
+            <%= image_tag('default-image.png') %>
+          <% end %>
           <div class="caption">
             <h4><%= product.title %></h4>
             <h6>$<%= product.price %></h6>

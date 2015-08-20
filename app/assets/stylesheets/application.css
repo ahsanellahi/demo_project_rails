@@ -22,6 +22,10 @@
   float: left;
 }
 
+.img-container{
+  height: 263px !important;
+}
+
 .full-width{
   width: 100%;
 }

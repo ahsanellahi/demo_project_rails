@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  PER_PAGE = 5
+  PER_PAGE = 9
   attr_accessible :body, :price, :title, :images_attributes
 
   has_many :images, as: :imageable, dependent: :destroy
