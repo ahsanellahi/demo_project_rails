@@ -12,7 +12,7 @@ DemoProject::Application.routes.draw do
   devise_for :users
   ActiveAdmin.routes(self)
 
-  get "users/dashboard"
+  get 'users/dashboard', to: 'users#dashboard'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
