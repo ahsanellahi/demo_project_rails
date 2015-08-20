@@ -18,8 +18,8 @@
 }
 
 .thumbnail {
-  display: inline-block !important;
-  max-width: 32%;
+  width: 100%;
+  float: left;  
 }
 
 .action-buttons{
