@@ -1,14 +1,19 @@
 DemoProject::Application.routes.draw do
 
+  root to: 'products#index'
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   resources :products do
     resources :reviews
   end
 
   devise_for :users
+  ActiveAdmin.routes(self)
 
   get "users/dashboard"
 
-  root to: 'products#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

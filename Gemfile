@@ -41,3 +41,5 @@ end
 # gem 'debugger'
 gem "nested_form"
 gem 'kaminari'
+gem 'activeadmin'
+gem 'jquery-ui-rails'
