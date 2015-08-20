@@ -1,24 +1,5 @@
 <h1><%= @user.email %></h1>
 <div>
   <p><strong>********Products*********</strong></p>
-  <% @products.each do |product| %>
-    <p>
-      <strong>Title:</strong>
-      <%= product.title %> |
-
-      <strong>Body:</strong>
-      <%= product.body %> |
-
-      <strong>Price:</strong>
-      <%= product.price %> |
-
-      <strong>Total Reviews:</strong>
-      <%= product.reviews_count %> |
-
-      <strong>Images</strong>
-      <% product.images.each do |image| %>
-        <%= image_tag image.get_image_url(:thumb) %>
-      <% end %>
-    </p>
-  <% end %>
+  <%= render '/products/user_products', products: @products %>
 </div>

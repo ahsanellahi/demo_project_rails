@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_filter :set_product, only: [:show, :edit, :update, :destroy]
   before_filter :product_owner, only: [:show]
   before_filter :authenticate_user!, except: [:show, :index]
-  before_filter :authenticate_for_owner, except: [:show, :index]
+  before_filter :authenticate_for_owner, except: [:show, :index, :new, :create]
 
   respond_to :html
 

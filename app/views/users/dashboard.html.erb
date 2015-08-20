@@ -1,36 +1,11 @@
 <h1><%= @user.email %></h1>
 <div>
   <p><strong>********Products*********</strong></p>
-  <% @products.each do |product| %>
-    <p>
-      <strong>Title:</strong>
-      <%= product.title %> |
-
-      <strong>Body:</strong>
-      <%= product.body %> |
-
-      <strong>Price:</strong>
-      <%= product.price %> |
-
-      <strong>Total Reviews:</strong>
-      <%= product.reviews_count %> |
-
-      <strong>Images</strong>
-      <% product.images.each do |image| %>
-        <%= image_tag image.get_image_url(:thumb) %>
-      <% end %>
-
-      <%= link_to 'Edit', edit_product_path(product) %>
-      <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </p>
-  <% end %>
+  <%= render '/products/user_products', products: @products %>
 </div>
 <div>
   <% if is_owner_and_signed_in? @user %>
     <p><strong>********Reviews*********</strong></p>
-    <% @reviews.each do |review| %>
-      <%= render 'reviews/review', review: review, product: review.product %>
-      on Product <%= link_to review.product.title, review.product %>
-    <% end %>
+    <%= render '/reviews/user_reviews', reviews: @reviews %>
   <% end %>
 </div>
