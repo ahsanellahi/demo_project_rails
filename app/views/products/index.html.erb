@@ -12,11 +12,11 @@
       <div class="col-lg-4">
         <div class="thumbnail">
           <a href='<%= product_path(product) %>'>
-            <%= image_tag(get_product_image_url(product.images.first), class: 'img-container') %>
+            <%= image_tag(get_product_image_url(product.images.first, :original), class: 'img-container') %>
           </a>
           <div class="caption">
             <h3><%= product.title %></h3>
-            <h6>$<%= product.price %></h6>
+            <h6>Rs. <%= product.price %></h6>
             <p>Seller: <%= link_to product.user.email, user_page(product.user) , class: "btn btn-link"%></p>
             <p>
               <%= link_to "View", product_path(product), class: "btn btn-default", type: 'button' %>

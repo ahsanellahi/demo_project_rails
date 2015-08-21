@@ -1,9 +1,8 @@
 <%= form_for([product, review], remote: true) do |f| %>
   <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content, required: true %>
+    <%= f.text_area :content, required: true, placeholder: 'Give your review..', class: 'review-textarea' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
   </div>
 <% end %>

@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @images = @product.images
     @reviews = @product.reviews
     @review = Review.new
     respond_with(@product)

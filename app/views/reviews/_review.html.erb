@@ -1,11 +1,16 @@
-<p id="review_<%= review.id %>">
-  <strong>
-    <%= link_to get_owner_email(review), user_page(review.user) %>
-  </strong>
-  <%= review.content %>
-  <% if review_owner? review.user %>
-    <%= link_to "Edit", edit_product_review_path(product, review), remote: true %>
-    <%= link_to "X", [product, review], method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
-  <% end %>
-    <%= link_to "X", [product, review], method: :delete, data: { confirm: 'Are you sure?' }, remote: true if product_owner? @owner %>
-</p>
+<div class="media" id="review_<%= review.id %>">
+  <a class="pull-left" href="<%= user_page(review.user) %>">
+    <%= image_tag(review.user.image.photo.url(:thumb), class: 'media-object img-rounded') %>
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading"><%= link_to get_owner_email(review), user_page(review.user), class: 'btn-link' %> <span class='text-muted'>(<%= review.created_at %>)</span></h4>
+    <%= review.content %>
+    <p class='pull-right'>
+      <% if review_owner? review.user %>
+        <%= link_to "Edit", edit_product_review_path(product, review), remote: true, class: 'btn btn-info' %>
+        <%= link_to "Remove", [product, review], method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'btn btn-danger' %>
+      <% end %>
+        <%= link_to "Remove", [product, review], method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'btn btn-danger' if product_owner? @owner %>
+    </p>
+  </div>
+</div>

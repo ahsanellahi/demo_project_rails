@@ -1,34 +1,58 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @product.title %>
-</p>
-
-<p>
-  <b>Body:</b>
-  <%= @product.body %>
-</p>
-
-<p>
-  <b>Price:</b>
-  <%= @product.price %>
-</p>
-
-<p>Images</p>
-<p>
-  <% @product.images.each do |img| %>
-    <%= image_tag img.photo.url(:thumb) %>
-  <% end %>
-</p>
-
-<%= render '/reviews/reviews', reviews: @reviews, product: @product %>
-
-<div id="review-update-form"></div>
-
-<div id="review-form">
-  <%= render '/reviews/form', product: @product, review: @review unless is_owner_and_signed_in?(@owner) %>
+<div class="page-header">
+  <h1><%= @product.title %>
+    <%= link_to 'Edit Product', edit_product_path(@product), class: 'btn btn-primary' if is_owner_and_signed_in?(@owner) %>
+    <%= link_to 'Back', products_path, class: 'btn btn-primary' %>
+  </h1>
 </div>
 
-<%= link_to 'Edit', edit_product_path(@product) if is_owner_and_signed_in?(@owner) %> |
-<%= link_to 'Back', products_path %>
+<div clas='col-lg-6'>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+  <% @images.each do |image| %>
+    <div class="carousel-inner" role="listbox">
+      <div class="<%= image == @images.first ? 'item active' : 'item' %>">
+        <%= image_tag(get_product_image_url(image, :original), width: '460', height: '345') %>
+      </div>
+    </div>
+  <% end %>
+
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+</div>
+
+<div class='drop-down'>
+  <div class='col-lg-6'>
+    <div class='row'>
+      <div class="panel-group">
+        <div class="panel panel-info">
+          <div class="panel-heading"><h4><strong>Details</strong></h4></div>
+          <div class="panel-body">
+            <p><strong>Description:</strong> <%= @product.body %></p>
+            <p><strong>Price:</strong> Rs. <%= @product.price %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='col-lg-6'>
+    <div id='reviews-section'>
+      <%= render '/reviews/reviews', reviews: @reviews, product: @product %>
+
+      <div id="review-update-form"></div>
+
+      <div id="review-form">
+        <%= render '/reviews/form', product: @product, review: @review unless is_owner_and_signed_in?(@owner) %>
+      </div>
+    </div>
+  </div>
+</div>

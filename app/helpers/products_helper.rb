@@ -7,7 +7,7 @@ module ProductsHelper
     user_signed_in? && is_owner?(user)
   end
 
-  def get_product_image_url image
-    image ? image.get_image_url(:original) : 'default-image.png'
+  def get_product_image_url image, size
+    image ? image.get_image_url(size) : 'default-image.png'
   end
 end

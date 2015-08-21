@@ -30,7 +30,7 @@
       <%= f.fields_for :image, resource.get_image do |image_f| %>
         <div class="field">
           <div class='clearfix'>
-            <%= image_tag resource.image.photo.url(:thumb), class: 'img-container' if resource.image.present? %>
+            <%= image_tag resource.image.photo.url(:thumb), class: 'img-thumbnail' if resource.image.present? %>
           </div>
           <div class='clearfix'>
             <%= image_f.file_field :photo %>
