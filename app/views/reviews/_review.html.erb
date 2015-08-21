@@ -1,6 +1,6 @@
 <p id="review_<%= review.id %>">
   <strong>
-    <%= link_to get_owner_email(review), show_or_dashboard(review.user) %>
+    <%= link_to get_owner_email(review), user_page(review.user) %>
   </strong>
   <%= review.content %>
   <% if review_owner? review.user %>

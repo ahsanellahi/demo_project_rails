@@ -11,18 +11,16 @@
     <% @products.each do |product| %>
       <div class="col-lg-4">
         <div class="thumbnail">
-          <% if product.images.first %>
-            <%= image_tag(product.images.first.get_image_url(:original), class: 'img-container') %>
-          <% else %>
-            <%= image_tag('default-image.png') %>
-          <% end %>
+          <a href='<%= product_path(product) %>'>
+            <%= image_tag(get_product_image_url(product.images.first), class: 'img-container') %>
+          </a>
           <div class="caption">
-            <h4><%= product.title %></h4>
+            <h3><%= product.title %></h3>
             <h6>$<%= product.price %></h6>
-            <p>Blah Blah Blah</p>
+            <p>Seller: <%= link_to product.user.email, user_page(product.user) , class: "btn btn-link"%></p>
             <p>
               <%= link_to "View", product_path(product), class: "btn btn-default", type: 'button' %>
-              <%= link_to "Order", product_path(product), class: "btn btn-default", type: 'button' %>
+              <%= link_to "Purchase", product_path(product), class: "btn btn-default", type: 'button' %>
             </p>
           </div>
         </div>
