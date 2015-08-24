@@ -10,6 +10,7 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :images, allow_destroy: true
 
   validates_presence_of :title, :body, :price
+  validates :price, numericality: { greater_than: 0 }
 
   scope :ordered, order('created_at DESC')
 
