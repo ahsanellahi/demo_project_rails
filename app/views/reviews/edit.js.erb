@@ -1,2 +1,3 @@
-$('#review-form').hide()
+$('#review-form').hide();
 $('#review-update-form').html("<%= raw escape_javascript(render 'form', product: @product, review: @review) %>");
+$('#review-update-form').show();

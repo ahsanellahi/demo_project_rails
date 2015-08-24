@@ -1,2 +1,3 @@
-$('#review-form').show()
-$('#review-update-form').fadeOut()
+$('#review-form').show();
+$('#review-update-form').hide();
+$('#review_<%= params[:id] %>').html("<%= raw escape_javascript(render @review, product: @product) %>");
