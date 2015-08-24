@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_one :image, as: :imageable, dependent: :destroy
   has_many :products
   has_many :reviews
-  has_one :order
+  has_many :orders
 
   validates_presence_of :first_name, :last_name
   validates_length_of :first_name, :last_name, maximum: 30

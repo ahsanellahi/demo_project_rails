@@ -1,5 +1,13 @@
 DemoProject::Application.routes.draw do
 
+  resource :cart, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
+  
+  get "order_items/create"
+  get "order_items/update"
+  get "order_items/destroy"
+  get "carts/show"
+
   root to: 'products#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
