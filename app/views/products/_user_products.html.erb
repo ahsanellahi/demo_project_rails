@@ -1,26 +1,27 @@
 <div id='user-products-pagination'>
   <%= paginate @products, param_name: 'product_page_number' %>
-  <% products.each do |product| %>
-    <p>
-      <strong>Title:</strong>
-      <%= product.title %> |
-
-      <strong>Body:</strong>
-      <%= product.body %> |
-
-      <strong>Price:</strong>
-      <%= product.price %> |
-
-      <strong>Total Reviews:</strong>
-      <%= product.reviews_count %> |
-
-      <strong>Images</strong>
-      <% product.images.each do |image| %>
-        <%= image_tag image.get_image_url(:thumb) %>
+  <div class="row">
+    <div class="">
+      <% @products.each do |product| %>
+        <div class="col-lg-4">
+          <div class="thumbnail">
+            <a href='<%= product_path(product) %>'>
+              <%= image_tag(get_product_image_url(product.images.first, :original), class: 'img-container') %>
+            </a>
+            <div class="caption">
+              <h3><%= product.title %></h3>
+              <h6>Rs. <%= product.price %></h6>
+              <p>Total Reviews: <%= product.reviews_count %></p>
+              <p>Seller: <%= link_to product.user.email, user_page(product.user) , class: "btn btn-link"%></p>
+              <p>
+                <%= link_to "View", product_path(product), class: "btn btn-default", type: 'button' %>
+                <%= link_to 'Edit', edit_product_path(product), class: "btn btn-primary", type: 'button' if product.user == current_user %>
+                <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", type: 'button' if product.user == current_user %>
+              </p>
+            </div>
+          </div>
+        </div>
       <% end %>
-
-      <%= link_to 'Edit', edit_product_path(product) %>
-      <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </p>
-  <% end %>
+    </div>
+  </div>
 </div>

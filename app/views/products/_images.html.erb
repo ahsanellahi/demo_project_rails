@@ -2,9 +2,9 @@
   <div class="field">
     <%= image_form.file_field(:photo) %>
 
-    <%= image_tag(image_form.object.photo.url(:thumb)) if image_form.object.photo.present? %>
-    <%= image_form.link_to_remove "Remove" %>
+    <%= image_tag(image_form.object.photo.url(:thumb), class: 'drop-down') if image_form.object.photo.present? %>
+    <%= image_form.link_to_remove "X", class: 'btn btn-danger drop-down circle' %>
   </div>
 <% end %>
 
-<p><%= f.link_to_add "Add image", :images %></p>
+<p><%= f.link_to_add "Add image", :images, class: 'btn btn-primary' %></p>

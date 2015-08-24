@@ -1,7 +1,13 @@
 <div id='user-reviews-pagination'>
   <%= paginate @reviews, param_name: 'review_page_number', remote: true %>
   <% reviews.each do |review| %>
-    <%= render 'reviews/review', review: review, product: review.product %>
-    on Product <%= link_to review.product.title, review.product %>
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h4><strong>Product: <%= link_to review.product.title, review.product, class: 'btn btn-default' %></strong></h4></div>
+        <div class="panel-body">
+          <%= render 'reviews/review', review: review, product: review.product %>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>

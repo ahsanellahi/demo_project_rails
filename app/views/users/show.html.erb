@@ -1,5 +1,8 @@
-<h1><%= @user.email %></h1>
+<div class="page-header">
+  <h1><%= @user.email %></h1>
+</div>
+
 <div>
-  <p><strong>********Products*********</strong></p>
+  <h2><span class="label label-primary">Products</span></h2>
   <%= render '/products/user_products', products: @products %>
 </div>
