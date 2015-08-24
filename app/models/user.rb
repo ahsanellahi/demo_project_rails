@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_one :order
 
+  validates_presence_of :first_name, :last_name
+  validates_length_of :first_name, :last_name, maximum: 30
+
   accepts_nested_attributes_for :image
 
   def get_image

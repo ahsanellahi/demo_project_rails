@@ -12,7 +12,7 @@
               <h3><%= product.title %></h3>
               <h6>Rs. <%= product.price %></h6>
               <p>Total Reviews: <%= product.reviews_count %></p>
-              <p>Seller: <%= link_to product.user.email, user_page(product.user) , class: "btn btn-link"%></p>
+              <p>Seller: <%= link_to user_full_name(product.user), user_page(product.user) , class: "btn btn-link"%></p>
               <p>
                 <%= link_to "View", product_path(product), class: "btn btn-default", type: 'button' %>
                 <%= link_to 'Edit', edit_product_path(product), class: "btn btn-primary", type: 'button' if product.user == current_user %>

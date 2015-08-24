@@ -4,7 +4,7 @@
   </a>
   <div class="media-body">
     <h4 class="media-heading">
-      <%= link_to get_owner_email(review), user_page(review.user), class: 'btn-link' %>
+      <%= link_to user_full_name(review.user), user_page(review.user), class: 'btn-link' %>
       <span class='text-muted'>(<%= review.created_at %>)</span>
     </h4>
     <%= review.content %>
