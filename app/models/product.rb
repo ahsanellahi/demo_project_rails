@@ -4,6 +4,8 @@ class Product < ActiveRecord::Base
 
   has_many :images, as: :imageable, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :order_items, dependent: :destroy
+  has_many :orders, through: :order_items
 
   belongs_to :user
 
