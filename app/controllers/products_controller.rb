@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
     @images = @product.images
     @reviews = @product.reviews
     @review = Review.new
+    @order_item = current_order.order_items.new
     respond_with(@product)
   end
 
