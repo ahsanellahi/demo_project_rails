@@ -1,22 +1,18 @@
-  <div class="row">
-    <div class="col-xs-8">
-      <div class="panel-group">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4><%= link_to product.title, product_path(product), class: "label label-success", type: 'button' %></h4>
-          </div>
-          <div class="panel-body">
-            <%= form_for order_item, remote: true do |f| %>
-              <h6 class="text-left">
-                Price:
-                <span class="text-primary"><%= display_price(product) %></span>
-                  <div class="pull-right">
-                    <%= link_to "Delete", order_item, { data: { confirm: "Are you sure you wish to delete the product '#{order_item.product.title}' from your cart?" }, method: :delete, remote: true, class: "btn btn-danger" } %>
-                  </div>
-              </h6>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<tr>
+  <td>
+    <%= link_to product.title, product_path(product), class: 'btn-link' %>
+  </td>
+  <td>
+    <a href='<%= product_path(product) %>'>
+      <%= image_tag(get_product_image_url(product.images.first, :thumb), class: 'cart-img') %>
+    </a>
+  </td>
+  <td><%= product.body %></td>
+  <td><%= display_price(product) %></td>
+  <td><%= link_to user_full_name(product.user), user_page(product.user) , class: "btn-link"%></td>
+  <td>
+    <%= form_for order_item, remote: true do |f| %>
+      <%= link_to "Remove", order_item, { data: { confirm: "Are you sure you wish to delete the product '#{order_item.product.title}' from your cart?" }, method: :delete, remote: true, class: "label label-danger" } %>
+    <% end %>
+  </td>
+</tr>

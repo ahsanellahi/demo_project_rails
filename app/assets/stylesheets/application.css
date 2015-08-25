@@ -104,3 +104,7 @@
 .new_order_item {
   display: inline;
 }
+
+.cart-img {
+  height: 63px;
+}
