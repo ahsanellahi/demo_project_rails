@@ -108,3 +108,13 @@
 .cart-img {
   height: 63px;
 }
+
+.separator {
+  padding-bottom: 10px;
+  border-bottom: 2px #eee solid;
+}
+
+.coupon {
+  width: 60% !important;
+  display: inline !important;
+}
