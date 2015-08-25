@@ -45,6 +45,9 @@
 
 
   <div class="container">
+    <div id='notice'>
+      <%= render 'layouts/flash', flash: flash %>
+    </div>
     <%= yield %>
   </div>
 

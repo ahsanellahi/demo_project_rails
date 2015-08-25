@@ -1,0 +1,6 @@
+if ("<%= @coupon && @coupon.active %>") {
+  $('#total-price').hide();
+  $('#total-coupon-price').html("<strong><%= display_price(apply_discount(current_order.subtotal)) %></strong>");
+  $('#total-coupon-price').show();
+}
+$("#notice").html("<%= escape_javascript(render 'layouts/flash', flash: flash).html_safe %>");

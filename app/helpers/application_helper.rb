@@ -11,4 +11,8 @@ module ApplicationHelper
   def display_price price
     ['Rs.', price].join(' ')
   end
+
+  def apply_discount price
+    (price * 0.9).ceil
+  end
 end

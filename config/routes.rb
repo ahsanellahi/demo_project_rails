@@ -22,6 +22,7 @@ DemoProject::Application.routes.draw do
 
   get 'users/dashboard', to: 'users#dashboard'
   get 'users/show/:id', to: 'users#show', as: :users_show
+  post 'order_items/check_coupon', to: 'order_items#check_coupon'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

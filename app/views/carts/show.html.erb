@@ -20,8 +20,10 @@
         <p id='total-price' class='text-danger separator'><strong>Total Price: <%= display_price(current_order.subtotal) %></strong></p>
         <p id='total-coupon-price' class='text-danger'></p>
         <p>
-          <input type="text" class="form-control coupon" placeholder="Apply coupon">
-          <%= link_to 'Apply coupon', root_path, class: "btn btn-info pull-right", type: 'button'%>
+          <%= form_tag(url_for(controller: 'order_items', action: 'check_coupon', method: 'post'), remote: true) do %>
+            <%= text_field_tag(:token, nil, required: true, class: 'form-control coupon', placeholder: 'Apply coupon') %>
+            <%= submit_tag('Apply coupon', class: "btn btn-info pull-right") %>
+          <% end %>
         </p>
         <p>
           <%= link_to 'Checkout', root_path, class: "btn btn-lg btn-block btn-primary", type: 'button'%>
