@@ -1,2 +1,9 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<div class="page-header">
+  <h1>Shopping Cart
+    <%= link_to 'Show Product', root_path, class: "btn btn-primary active right", type: 'button'%>
+  </h1>
+</div>
+
+<div class="shopping-cart">
+  <%= render "shopping_cart" %>
+</div>

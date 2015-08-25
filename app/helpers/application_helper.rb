@@ -7,4 +7,8 @@ module ApplicationHelper
   def user_full_name user
     [user.first_name, user.last_name].join(' ')
   end
+
+  def display_price product
+    ['Rs.', product.price].join(' ')
+  end
 end
