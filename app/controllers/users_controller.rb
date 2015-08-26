@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_user!, only: :dashboard
+
   def dashboard
     @user = User.includes(products: [:reviews, :images]).includes(reviews: [:product]).find(current_user.id)
     @reviews = @user.reviews.ordered.page(params[:review_page_number]).per(User::PER_PAGE)
