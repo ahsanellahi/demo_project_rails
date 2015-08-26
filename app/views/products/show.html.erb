@@ -44,10 +44,14 @@
             <p><strong>Price: <span class='text-danger'><%= display_price(@product.price) %></span></strong></p>
             <p><strong>Seller: </strong><%= link_to user_full_name(@product.user), user_page(@product.user), class: "btn-link"%></p>
             <p>
+              <% if product_in_cart?(@product) %>
+              <%= link_to "Add to Cart", nil, class: "btn btn-primary disabled", id: "already-in-cart-#{@product.id}", type: 'button' %>
+            <% else %>
               <%= form_for @order_item, remote: true do |f| %>
                 <%= f.hidden_field :product_id, value: @product.to_param %>
-                <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+                <%= f.submit "Add to Cart", class: "btn btn-primary", id: "add-to-cart-#{@product.id}" %>
               <% end %>
+            <% end %>
             </p>
           </div>
         </div>

@@ -1,6 +1,8 @@
 <% if @order.errors.any? || @order_item.errors.any? %>
   alert("not valid.");
 <% else %>
+  $("#already-in-cart-<%= @order_item.product_id %>").show();
+  $("#add-to-cart-<%= @order_item.product_id %>").addClass('disabled');
   $(".cart-text").html("<%= escape_javascript(render 'layouts/cart_text') %>");
   $("#notice").html("<%= escape_javascript(render 'layouts/flash', flash: flash).html_safe %>");
 <% end %>

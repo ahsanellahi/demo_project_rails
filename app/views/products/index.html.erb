@@ -19,9 +19,13 @@
             <h6>Rs. <%= product.price %></h6>
             <p>Seller: <%= link_to user_full_name(product.user), user_page(product.user) , class: "btn btn-link"%></p>
             <%= link_to "View", product_path(product), class: "btn btn-default", type: 'button' %>
-            <%= form_for @order_item, remote: true do |f| %>
-              <%= f.hidden_field :product_id, value: product.to_param %>
-              <%= f.submit "Add to Cart", class: "btn btn-default" %>
+            <% if product_in_cart?(product) %>
+              <%= link_to "Add to Cart", nil, class: "btn btn-primary disabled", id: "already-in-cart-#{product.id}", type: 'button' %>
+            <% else %>
+              <%= form_for @order_item, remote: true do |f| %>
+                <%= f.hidden_field :product_id, value: product.to_param %>
+                <%= f.submit "Add to Cart", class: "btn btn-primary", id: "add-to-cart-#{product.id}" %>
+              <% end %>
             <% end %>
           </div>
         </div>
