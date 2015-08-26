@@ -1,3 +1,4 @@
 $('#review-form').show();
 $('#review-update-form').hide();
 $('#review_<%= params[:id] %>').html("<%= raw escape_javascript(render @review, product: @product) %>");
+$("#notice").html("<%= escape_javascript(render 'layouts/flash', flash: flash).html_safe %>");

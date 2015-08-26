@@ -1,2 +1,3 @@
 $(".cart-text").html("<%= escape_javascript(render 'layouts/cart_text') %>");
 $(".shopping-cart").html("<%= escape_javascript(render 'carts/shopping_cart', current_order: current_order) %>");
+$("#notice").html("<%= escape_javascript(render 'layouts/flash', flash: flash).html_safe %>");

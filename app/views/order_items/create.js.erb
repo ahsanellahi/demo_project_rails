@@ -2,4 +2,5 @@
   alert("not valid.");
 <% else %>
   $(".cart-text").html("<%= escape_javascript(render 'layouts/cart_text') %>");
+  $("#notice").html("<%= escape_javascript(render 'layouts/flash', flash: flash).html_safe %>");
 <% end %>

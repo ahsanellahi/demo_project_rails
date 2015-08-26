@@ -28,6 +28,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     @review.save
     respond_to do |format|
+      flash.now[:success] = "Review created successfully!"
       format.html { redirect_to @product}
       format.js
     end
@@ -36,6 +37,7 @@ class ReviewsController < ApplicationController
   def update
     @review.update_attributes(params[:review])
     respond_to do |format|
+      flash.now[:success] = "Review updated successfully!"
       format.html { redirect_to @product}
       format.js
     end
@@ -44,6 +46,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
     respond_to do |format|
+      flash.now[:danger] = "Review destroyed successfully!"
       format.html { redirect_to @product}
       format.js
     end

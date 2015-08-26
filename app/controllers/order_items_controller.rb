@@ -5,6 +5,7 @@ class OrderItemsController < ApplicationController
     @order_item.product_id = params[:order_item][:product_id]
     @order.save
     respond_to do |format|
+      flash.now[:success] = "Product is added in cart successfully!"
       format.html { redirect_to @product }
       format.js
     end
@@ -16,6 +17,7 @@ class OrderItemsController < ApplicationController
     @order_item.destroy
     @order_products = @order.products
     respond_to do |format|
+      flash.now[:danger] = "Product is removed from cart successfully!"
       format.html { redirect_to @product }
       format.js
     end

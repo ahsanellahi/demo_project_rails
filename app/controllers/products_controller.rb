@@ -32,17 +32,20 @@ class ProductsController < ApplicationController
     @product = Product.new(params[:product])
     @product.user = current_user
     @product.save
+    flash[:success] = "Product created successfully!"
     respond_with(@product)
   end
 
   def update
     @product.update_attributes(params[:product])
+    flash[:success] = "Product updated successfully!"
     respond_with(@product)
   end
 
   def destroy
     @product.destroy
-    respond_with(@product)
+    flash[:danger] = "Product destroyed successfully!"
+    redirect_to users_dashboard_path
   end
 
   private
