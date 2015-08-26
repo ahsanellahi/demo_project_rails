@@ -2,3 +2,4 @@ $('#review-form').hide();
 $('#review-update-form').html("<%= raw escape_javascript(render 'form', product: @product, review: @review) %>");
 $('#review-update-form').show();
 $("#notice").html("<%= escape_javascript(render 'layouts/flash', flash: flash).html_safe %>");
+$(window.location.replace('#review-update-form'));
