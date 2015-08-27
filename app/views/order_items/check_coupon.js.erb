@@ -1,4 +1,4 @@
-if ("<%= @coupon && @coupon.active %>") {
+if ("<%= @coupon && @coupon.active %>" == "false") {
   $('#total-price').hide();
   $('#total-coupon-price').html("<strong><%= display_price(apply_discount(current_order.subtotal)) %></strong>");
   $('#total-coupon-price').show();
