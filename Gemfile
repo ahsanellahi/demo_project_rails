@@ -48,3 +48,5 @@ gem "nested_form"
 gem 'kaminari'
 gem 'activeadmin'
 gem 'jquery-ui-rails'
+gem 'braintree', '~> 2.33.1'
+gem 'figaro', '~> 0.7.0'

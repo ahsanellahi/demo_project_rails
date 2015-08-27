@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
       @current_order = Order.create!
       session[:order_id] = @current_order.id
     end
+
+    if user_signed_in?
+      @current_order.user_id = current_user.id
+    end
     @current_order
   end
 end

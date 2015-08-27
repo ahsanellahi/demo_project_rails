@@ -24,4 +24,10 @@ class User < ActiveRecord::Base
   def get_default_image
     "/assets/original/default_profile_photo.png"
   end
+
+  def purchase_products!
+    @order = self.orders.where(purchased_at: nil).last
+    @order.purchased_at = Time.now
+    @order.save
+  end
 end
