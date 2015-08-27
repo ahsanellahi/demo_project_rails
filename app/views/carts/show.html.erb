@@ -10,25 +10,27 @@
     </div>
   </div>
 
-  <div class="col-lg-4">
-    <div class="panel panel-default">
-      <div class='panel-heading'>
-        <h4><strong>Checkout</strong></h4>
-      </div>
-      <div class="panel-body">
-        <p class='text-default'><strong>Total Products: <%= current_order.products.count %></strong></p>
-        <p id='total-price' class='text-danger separator'><strong>Total Price: <%= display_price(current_order.subtotal) %></strong></p>
-        <p id='total-coupon-price' class='text-danger'></p>
-        <p>
-          <%= form_tag(url_for(controller: 'order_items', action: 'check_coupon', method: 'post'), remote: true) do %>
-            <%= text_field_tag(:token, nil, required: true, class: 'form-control coupon', placeholder: 'Apply coupon') %>
-            <%= submit_tag('Apply coupon', class: "btn btn-info pull-right") %>
-          <% end %>
-        </p>
-        <p>
-          <%= link_to 'Checkout', new_transaction_path, class: "btn btn-lg btn-block btn-primary", type: 'button' if user_signed_in_and_has_order? %>
-        </p>
+  <% if current_order_has_products? %>
+    <div class="col-lg-4" id='checkout-container'>
+      <div class="panel panel-default">
+        <div class='panel-heading'>
+          <h4><strong>Checkout</strong></h4>
+        </div>
+        <div class="panel-body">
+          <p class='text-default'><strong>Total Products: <%= current_order.products.count %></strong></p>
+          <p id='total-price' class='text-danger separator'><strong>Total Price: <%= display_price(current_order.subtotal) %></strong></p>
+          <p id='total-coupon-price' class='text-danger'></p>
+          <p>
+            <%= form_tag(url_for(controller: 'order_items', action: 'check_coupon', method: 'post'), remote: true) do %>
+              <%= text_field_tag(:token, nil, required: true, class: 'form-control coupon', placeholder: 'Apply coupon') %>
+              <%= submit_tag('Apply coupon', class: "btn btn-info pull-right") %>
+            <% end %>
+          </p>
+          <p>
+            <%= link_to 'Checkout', new_transaction_path, class: "btn btn-lg btn-block btn-primary", type: 'button' if user_signed_in_and_has_order? %>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>

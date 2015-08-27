@@ -15,4 +15,8 @@ module ApplicationHelper
   def apply_discount price
     (price * 0.9).ceil
   end
+
+  def current_order_has_products?
+    current_order.products.first
+  end
 end
