@@ -1,6 +1,8 @@
 if ("<%= @coupon && @coupon.active %>" == "true") {
-  $('#total-price').hide();
-  $('#total-coupon-price').html("<strong>Discounted Price: <%= display_price(apply_discount(current_order.subtotal)) %></strong>");
+  $('#total-price').addClass('strike-text');
+  $('#total-coupon-price').html("<strong>Discounted Price: <%= display_price(apply_discount(current_order)) %></strong>");
+  $(".cart-text").html("<%= escape_javascript(render 'layouts/cart_text') %>");
   $('#total-coupon-price').show();
 }
+
 $("#notice").html("<%= escape_javascript(render 'layouts/flash', flash: flash).html_safe %>");

@@ -18,7 +18,9 @@
         </div>
         <div class="panel-body">
           <p class='text-default'><strong>Total Products: <%= current_order.products.count %></strong></p>
-          <p id='total-price' class='text-danger separator'><strong>Total Price: <%= display_price(current_order.subtotal) %></strong></p>
+          <p id='total-price' class='text-danger separator'>
+            <%= render 'carts/total_price' %>
+          </p>
           <p id='total-coupon-price' class='text-danger'></p>
           <p>
             <%= form_tag(url_for(controller: 'order_items', action: 'check_coupon', method: 'post'), remote: true) do %>

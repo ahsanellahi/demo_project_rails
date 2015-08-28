@@ -5,5 +5,5 @@
   $("#add-to-cart-<%= @order_item.product_id %>").addClass('disabled');
   $(".cart-text").html("<%= escape_javascript(render 'layouts/cart_text') %>");
   $("#notice").html("<%= escape_javascript(render 'layouts/flash', flash: flash).html_safe %>");
-  $(window.location.replace('#notice'));
+  $(window.location.replace('#header-bar'));
 <% end %>

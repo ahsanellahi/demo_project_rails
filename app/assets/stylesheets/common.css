@@ -103,3 +103,7 @@
   width: 60% !important;
   display: inline !important;
 }
+
+.strike-text {
+  text-decoration: line-through;
+}

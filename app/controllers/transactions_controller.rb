@@ -8,7 +8,7 @@ class TransactionsController < ApplicationController
 
   def create
     @result = Braintree::Transaction.sale(
-              amount: current_order.subtotal,
+              amount: current_order[:total],
               payment_method_nonce: params[:payment_method_nonce])
     if @result.success?
       current_user.purchase_products!

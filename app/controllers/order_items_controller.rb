@@ -3,7 +3,7 @@ class OrderItemsController < ApplicationController
     @order = current_order
     @order_item = @order.order_items.new
     @order_item.product_id = params[:order_item][:product_id]
-    @order.save
+    @order.update_order_totals
     respond_to do |format|
       flash.now[:success] = "Product is added in cart successfully!"
       format.html { redirect_to @product }
@@ -15,6 +15,7 @@ class OrderItemsController < ApplicationController
     @order = current_order
     @order_item = @order.order_items.find(params[:id])
     @order_item.destroy
+    @order.update_order_totals
     @order_products = @order.products
     respond_to do |format|
       flash.now[:danger] = "Product is removed from cart successfully!"

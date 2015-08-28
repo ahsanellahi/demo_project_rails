@@ -6,19 +6,13 @@ class Order < ActiveRecord::Base
 
   belongs_to :user
 
-  after_save :update_subtotal
-  after_save :update_total
-
-  def subtotal
+  def calculate_subtotal
     self.products.collect{ |product| product.valid? ? product.price : 0 }.sum
   end
 
-private
-  def update_subtotal
-    self[:subtotal] = subtotal
+  def update_order_totals
+    self[:total] = self[:subtotal] = calculate_subtotal
+    self.save
   end
 
-  def update_total
-    self[:total] = self[:subtotal]
-  end
 end

@@ -12,8 +12,8 @@ module ApplicationHelper
     ['Rs.', price].join(' ')
   end
 
-  def apply_discount price
-    (price * 0.9).ceil
+  def apply_discount order
+    order[:total] = (order[:subtotal] * 0.9).ceil
   end
 
   def current_order_has_products?
