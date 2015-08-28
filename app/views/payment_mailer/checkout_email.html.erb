@@ -1,0 +1,23 @@
+<h2>Hi, <%= [@user.first_name, @user.last_name].join(' ') %></h2>
+<h4>This is your invoice: </h4>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Seller</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @order_products.each do |product| %>
+      <tr>
+        <td><%= product.title %></td>
+        <td><%= product.body %></td>
+        <td><%= "Rs. #{product.price}" %></td>
+        <td><%= [product.user.first_name, product.user.last_name].join(' ') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

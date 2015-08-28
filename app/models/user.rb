@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   PER_PAGE = 3
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :image_attributes
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :image_attributes, :first_name, :last_name
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :confirmable, :validatable
 

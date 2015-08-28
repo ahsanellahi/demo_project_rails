@@ -12,6 +12,7 @@ class TransactionsController < ApplicationController
               payment_method_nonce: params[:payment_method_nonce])
     if @result.success?
       current_user.purchase_products!
+      PaymentMailer.checkout_email(current_user, current_order).deliver
       redirect_to root_url, success: "Congraulations! Your transaction has been successfully!"
     else
       flash[:danger] = "Something went wrong while processing your transaction. Please try again!"
