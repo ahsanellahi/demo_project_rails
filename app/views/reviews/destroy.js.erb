@@ -1,2 +1,4 @@
 $('#review_<%= params[:id] %>').fadeOut()
+$('#review-update-form').html('');
+$('#review-form').show();
 $("#notice").html("<%= escape_javascript(render 'layouts/flash', flash: flash).html_safe %>");
