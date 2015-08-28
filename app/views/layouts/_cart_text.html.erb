@@ -1,1 +1,1 @@
-<%= link_to "#{current_order.products.count} Items in Cart: ( #{display_price(current_order[:total])} )", cart_path %>
+<%= link_to "#{current_order.products.count} Items in Cart: ( #{number_to_currency(current_order[:total])} )", cart_path %>

@@ -41,7 +41,7 @@
           </div>
           <div class="panel-body">
             <p><strong>Description: </strong><%= @product.body %></p>
-            <p><strong>Price: <span class='text-danger'><%= display_price(@product.price) %></span></strong></p>
+            <p><strong>Price: <span class='text-danger'><%= number_to_currency(@product.price) %></span></strong></p>
             <p><strong>Seller: </strong><%= link_to user_full_name(@product.user), user_page(@product.user), class: "btn-link"%></p>
             <p>
               <% if product_in_cart?(@product) %>

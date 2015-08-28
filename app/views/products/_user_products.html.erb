@@ -10,7 +10,7 @@
             </a>
             <div class="caption">
               <h3><%= product.title %></h3>
-              <h6>Rs. <%= product.price %></h6>
+              <h6><%= number_to_currency(product.price) %></h6>
               <p>Total Reviews: <%= product.reviews_count %></p>
               <p>Seller: <%= link_to user_full_name(product.user), user_page(product.user) , class: "btn btn-link"%></p>
               <p>

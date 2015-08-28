@@ -8,10 +8,6 @@ module ApplicationHelper
     [user.first_name, user.last_name].join(' ')
   end
 
-  def display_price price
-    ['Rs.', price].join(' ')
-  end
-
   def apply_discount order
     order[:total] = (order[:subtotal] * 0.9).ceil
   end
