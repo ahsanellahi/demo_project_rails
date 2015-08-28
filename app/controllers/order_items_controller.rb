@@ -1,25 +1,28 @@
 class OrderItemsController < ApplicationController
+  before_filter :fetch_order, only: [:create, :destroy]
+
   def create
-    @order = current_order
-    @order_item = @order.order_items.new
-    @order_item.product_id = params[:order_item][:product_id]
-    @order.update_order_totals
-    respond_to do |format|
-      flash.now[:success] = "Product is added in cart successfully!"
-      format.html { redirect_to @product }
-      format.js
+    @order_item = @order.update_order(params)
+    if @order_item.present?
+      @order.update_order_totals
+      respond_to do |format|
+        flash.now[:success] = "Product is added in cart successfully!"
+        format.html { redirect_to root_path }
+        format.js
+      end
+    else
+      redirect_to root_path
     end
   end
 
   def destroy
-    @order = current_order
     @order_item = @order.order_items.find(params[:id])
     @order_item.destroy
     @order.update_order_totals
     @order_products = @order.products
     respond_to do |format|
       flash.now[:danger] = "Product is removed from cart successfully!"
-      format.html { redirect_to @product }
+      format.html { redirect_to root_path }
       format.js
     end
   end
@@ -39,4 +42,9 @@ class OrderItemsController < ApplicationController
       end
     end
   end
+
+  private
+    def fetch_order
+      @order = current_order
+    end
 end

@@ -15,4 +15,10 @@ class Order < ActiveRecord::Base
     self.save
   end
 
+  def update_order(params)
+    order_item = self.order_items.new
+    order_item.product = Product.where(id: params[:order_item][:product_id]).first
+    order_item.save ? order_item : false
+  end
+
 end
