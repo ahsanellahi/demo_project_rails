@@ -1,5 +1,11 @@
 <div class="page-header">
-  <h1>New product <%= link_to 'Back', products_path, class: 'btn btn-primary' %></h1>
+  <h1>
+    <i class="fa fa-plus-circle"></i> New product
+    <%= link_to products_path, class: 'btn btn-primary' do %>
+      <i class="fa fa-arrow-left"></i>
+      Back
+    <% end %>
+  </h1>
 </div>
 
 <%= render 'form' %>

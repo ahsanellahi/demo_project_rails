@@ -1,7 +1,10 @@
 <div class="page-header">
   <h1>Editing product
     <%= link_to 'Show', @product, class: 'btn btn-primary' %>
-    <%= link_to 'Back', products_path, class: 'btn btn-primary' %>
+    <%= link_to products_path, class: 'btn btn-primary' do %>
+      <i class="fa fa-arrow-left"></i>
+      Back
+    <% end %>
   </h1>
 </div>
 

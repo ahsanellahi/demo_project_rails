@@ -1,1 +1,4 @@
-<%= link_to "#{current_order.products.count} Items in Cart: ( #{number_to_currency(current_order[:total])} )", cart_path %>
+<%= link_to cart_path do %>
+  <i class="fa fa-shopping-cart"></i>
+  <%= "#{current_order.products.count} Items in Cart: ( #{number_to_currency(current_order[:total])} )" %>
+<% end %>

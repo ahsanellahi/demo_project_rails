@@ -12,7 +12,9 @@
   <td><%= link_to user_full_name(product.user), user_page(product.user) , class: "btn-link"%></td>
   <td>
     <%= form_for order_item, remote: true do |f| %>
-      <%= link_to "Remove", order_item, { data: { confirm: "Are you sure you wish to delete the product '#{order_item.product.title}' from your cart?" }, method: :delete, remote: true, class: "label label-danger" } %>
+      <%= link_to order_item, { data: { confirm: "Are you sure you wish to delete the product '#{order_item.product.title}' from your cart?" }, method: :delete, remote: true, class: "btn btn-danger", id: "btn-remove-cart"} do %>
+        <i class="fa fa-trash"></i>
+      <% end %>
     <% end %>
   </td>
 </tr>

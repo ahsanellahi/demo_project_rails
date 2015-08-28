@@ -1,6 +1,11 @@
 <div class="page-header">
   <h1>All Products
-    <%= link_to 'New Product', new_product_path, class: "btn btn-primary active right", type: 'button' if user_signed_in? %>
+  <% if user_signed_in? %>
+    <%= link_to new_product_path, class: "btn btn-primary active right", type: 'button' do %>
+      <i class="fa fa-plus-circle"></i>
+      New Product
+    <% end %>
+  <% end %>
   </h1>
 </div>
 <div class='pull-right full-width'>

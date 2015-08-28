@@ -5,6 +5,9 @@
 .thumbnail {
   width: 100%;
   float: left;
+-webkit-box-shadow: 0 5px 15px #777;
+  -moz-box-shadow: 0 5px 15px #777;
+  box-shadow: 0 5px 15px #777;
 }
 
 .img-container {
@@ -106,4 +109,8 @@
 
 .strike-text {
   text-decoration: line-through;
+}
+
+#btn-remove-cart {
+  margin-left: 15%;
 }

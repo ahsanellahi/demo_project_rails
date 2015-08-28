@@ -29,7 +29,12 @@
             <% end %>
           </p>
           <p>
-            <%= link_to 'Checkout', new_transaction_path, class: "btn btn-lg btn-block btn-primary", type: 'button' if has_order? %>
+          <% if has_order? %>
+            <%= link_to new_transaction_path, class: "btn btn-lg btn-block btn-primary", type: 'button' do %>
+              <i class="fa fa-paypal"></i>
+              Checkout
+            <% end %>
+          <% end %>
           </p>
         </div>
       </div>
