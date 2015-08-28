@@ -27,7 +27,7 @@
             <% end %>
           </p>
           <p>
-            <%= link_to 'Checkout', new_transaction_path, class: "btn btn-lg btn-block btn-primary", type: 'button' if user_signed_in_and_has_order? %>
+            <%= link_to 'Checkout', new_transaction_path, class: "btn btn-lg btn-block btn-primary", type: 'button' if has_order? %>
           </p>
         </div>
       </div>
