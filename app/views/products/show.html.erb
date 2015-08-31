@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="page-header">
-  <h1><%= @product.title %>
+  <h1><%= @product.title.titleize %>
     <%= link_to 'Edit Product', edit_product_path(@product), class: 'btn btn-primary' if is_owner_and_signed_in?(@owner) %>
     <%= link_to products_path, class: 'btn btn-primary' do %>
       <i class="fa fa-arrow-left"></i>

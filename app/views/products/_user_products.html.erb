@@ -9,7 +9,7 @@
               <%= image_tag(get_product_image_url(product.images.first, :original), class: 'img-container') %>
             </a>
             <div class="caption">
-              <h3><%= product.title %></h3>
+              <h3><%= product.title.titleize %></h3>
               <h6><%= number_to_currency(product.price) %></h6>
               <p>Total Reviews: <%= product.reviews_count %></p>
               <p>Seller: <%= link_to user_full_name(product.user), user_page(product.user) , class: "btn btn-link"%></p>

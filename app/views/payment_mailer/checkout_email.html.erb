@@ -13,7 +13,7 @@
   <tbody>
     <% @order_products.each do |product| %>
       <tr>
-        <td><%= product.title %></td>
+        <td><%= product.title.titleize %></td>
         <td><%= product.body %></td>
         <td><%= "$#{product.price}" %></td>
         <td><%= [product.user.first_name, product.user.last_name].join(' ') %></td>
