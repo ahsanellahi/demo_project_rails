@@ -5,5 +5,5 @@
 <%= form_tag transactions_path do%>
   <h6>Please enter your payment details:</h6>
   <div id="dropin"></div>
-  <%= submit_tag "Pay ($#{current_order[:total]} USD)", class: 'btn btn-lg btn-success' %>
+  <%= submit_tag "Pay (#{number_to_currency(current_order[:total])})", class: 'btn btn-lg btn-success' %>
 <% end %>
