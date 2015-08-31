@@ -1,6 +1,6 @@
 <div class="media" id="review_<%= review.id %>">
   <a class="pull-left" href="<%= user_page(review.user) %>">
-    <%= image_tag(review.user.image.photo.url(:thumb), class: 'media-object img-rounded') %>
+    <%= image_tag(get_user_image_url(review.user), class: 'media-object img-rounded') %>
   </a>
   <div class="media-body">
     <h4 class="media-heading">
