@@ -20,12 +20,6 @@ DemoProject::Application.routes.draw do
     resources :reviews
   end
 
-  resources :products do
-    collection do
-      post 'search'
-    end
-  end
-
   devise_for :users
   ActiveAdmin.routes(self)
 

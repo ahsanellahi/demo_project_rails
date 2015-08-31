@@ -8,7 +8,7 @@
     <% end %>
     <div class="input-group pull-right">
 
-    <%= form_tag(search_products_path, remote: true, class: 'input-group pull-right') do %>
+    <%= form_tag(products_path, method: 'get', class: 'input-group pull-right') do %>
       <%= text_field_tag(:query, nil, required: true, class: 'form-control', placeholder: 'Search..') %>
       <span class="input-group-btn">
         <%= submit_tag('Search!', class: "btn btn-default") %>
