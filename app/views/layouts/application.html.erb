@@ -6,6 +6,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -24,13 +25,13 @@
             <li class="cart-text"><%= render 'layouts/cart_text' %></li>
           <% unless user_signed_in? %>
             <li>
-              <%= link_to new_user_session_path, class: "glyphicon glyphicon-log-in" do %>
+              <%= link_to new_user_session_path do %>
                 <i class="fa fa-sign-in"></i>
                 Sign In
               <% end %>
             </li>
             <li>
-              <%= link_to new_user_registration_path, class: "glyphicon glyphicon-user" do %>
+              <%= link_to new_user_registration_path do %>
                 <i class="fa fa-laptop"></i>
                 Register
               <% end %>
@@ -48,7 +49,7 @@
               </ul>
             </li>
             <li>
-              <%= link_to destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-in" do %>
+              <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>
                 Sign out
               <% end %>
