@@ -13,7 +13,8 @@ class TransactionsController < ApplicationController
     if @result.success?
       current_user.purchase_products!
       PaymentMailer.checkout_email(current_user, current_order).deliver
-      redirect_to root_url, success: "Congraulations! Your transaction has been successfully!"
+      flash[:success] = "Congraulations! Your transaction has been successfully!"
+      redirect_to root_url
     else
       flash[:danger] = "Something went wrong while processing your transaction. Please try again!"
       @client_token = generate_client_token
