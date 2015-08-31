@@ -1,43 +1,23 @@
 <div class="page-header">
   <h1>All Products
-  <% if user_signed_in? %>
-    <%= link_to new_product_path, class: "btn btn-primary active right", type: 'button' do %>
-      <i class="fa fa-plus-circle"></i>
-      New Product
+    <% if user_signed_in? %>
+      <%= link_to new_product_path, class: "btn btn-primary active right", type: 'button' do %>
+        <i class="fa fa-plus-circle"></i>
+        New Product
+      <% end %>
     <% end %>
-  <% end %>
+    <div class="input-group pull-right">
+
+    <%= form_tag(search_products_path, remote: true, class: 'input-group pull-right') do %>
+      <%= text_field_tag(:query, nil, required: true, class: 'form-control', placeholder: 'Search..') %>
+      <span class="input-group-btn">
+        <%= submit_tag('Search!', class: "btn btn-default") %>
+      </span>
+    <% end %>
+    </div>
   </h1>
 </div>
-<div class='pull-right full-width'>
-  <%= paginate @products %>
-</div>
-<div class="row">
-  <div class="">
-    <% @products.each do |product| %>
-      <div class="col-lg-4">
-        <div class="thumbnail">
-          <a href='<%= product_path(product) %>'>
-            <%= image_tag(get_product_image_url(product.images.first, :original), class: 'img-container') %>
-          </a>
-          <div class="caption">
-            <h3><%= product.title %></h3>
-            <h6><%= number_to_currency(product.price) %></h6>
-            <p>Seller: <%= link_to user_full_name(product.user), user_page(product.user) , class: "btn btn-link"%></p>
-            <%= link_to "View", product_path(product), class: "btn btn-default", type: 'button' %>
-            <% if product_in_cart?(product) %>
-              <%= link_to "Add to Cart", nil, class: "btn btn-primary disabled", id: "already-in-cart-#{product.id}", type: 'button' %>
-            <% else %>
-              <%= form_for @order_item, remote: true do |f| %>
-                <%= f.hidden_field :product_id, value: product.to_param %>
-                <%= f.submit "Add to Cart", class: "btn btn-primary", id: "add-to-cart-#{product.id}" %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
-<div class='pull-right full-width'>
-  <%= paginate @products %>
+
+<div id="index-products">
+  <%= render 'products', products: @products %>
 </div>

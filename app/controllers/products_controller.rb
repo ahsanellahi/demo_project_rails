@@ -1,8 +1,8 @@
 class ProductsController < ApplicationController
   before_filter :set_product, only: [:show, :edit, :update, :destroy]
   before_filter :product_owner, only: [:show]
-  before_filter :authenticate_user!, except: [:show, :index]
-  before_filter :authenticate_for_owner, except: [:show, :index, :new, :create]
+  before_filter :authenticate_user!, except: [:show, :index, :search]
+  before_filter :authenticate_for_owner, except: [:show, :index, :new, :create, :search]
 
   respond_to :html
 
@@ -46,6 +46,15 @@ class ProductsController < ApplicationController
     @product.destroy
     flash[:danger] = "Product destroyed successfully!"
     redirect_to users_dashboard_path
+  end
+
+  def search
+    @products = Product.search(params[:query])
+    @order_item = current_order.order_items.new
+    respond_to do |format|
+      format.html { redirect_to root_path}
+      format.js
+    end
   end
 
   private
