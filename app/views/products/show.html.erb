@@ -69,12 +69,12 @@
         <div class="panel-heading"><h4><strong>Reviews</strong></h4></div>
         <div class="panel-body">
           <div id='reviews-section'>
-            <%= render '/reviews/reviews', reviews: @reviews, product: @product %>
+            <%= render 'reviews/reviews', reviews: @reviews, product: @product %>
 
             <div id="review-update-form"></div>
 
             <div id="review-form">
-              <%= render '/reviews/form', product: @product, review: @review unless is_owner_or_not_signed_in?(@owner) %>
+              <%= render 'reviews/form', product: @product, review: @review unless owner_or_not_signed_in?(@owner) %>
             </div>
           </div>
         </div>

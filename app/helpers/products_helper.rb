@@ -7,7 +7,7 @@ module ProductsHelper
     user_signed_in? && is_owner?(user)
   end
 
-  def is_owner_or_not_signed_in? user
+  def owner_or_not_signed_in? user
     !(user_signed_in?) || is_owner?(user)
   end
 
