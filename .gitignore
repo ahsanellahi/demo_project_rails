@@ -18,3 +18,8 @@
 
 # Ignore application configuration
 /config/application.yml
+
+# Sphinx
+/db/sphinx/*
+/config/*.sphinx.conf
+/log/searchd.development.pid
