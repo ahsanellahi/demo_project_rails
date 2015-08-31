@@ -6,14 +6,13 @@
         New Product
       <% end %>
     <% end %>
-    <div class="input-group pull-right">
-
-    <%= form_tag(products_path, method: 'get', class: 'input-group pull-right') do %>
-      <%= text_field_tag(:query, nil, required: true, class: 'form-control', placeholder: 'Search..') %>
-      <span class="input-group-btn">
-        <%= submit_tag('Search!', class: "btn btn-default") %>
-      </span>
-    <% end %>
+    <div id="search-bar" class="input-group pull-right">
+      <%= form_tag(products_path, method: :get, class: 'input-group pull-right') do %>
+        <%= text_field_tag(:query, nil, required: true, class: 'form-control', placeholder: 'Search..') %>
+        <span class="input-group-btn">
+          <%= submit_tag('Search!', class: "btn btn-primary") %>
+        </span>
+      <% end %>
     </div>
   </h1>
 </div>
