@@ -16,9 +16,13 @@ class Product < ActiveRecord::Base
 
   scope :ordered, order('created_at DESC')
 
-  define_index do
+  define_index  do
+    set_property delta: true
+
     indexes title
     indexes body
+
+    has created_at
   end
 
   def reviews_count

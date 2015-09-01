@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
 
   def index
     if params[:query]
-      @products = Product.search(params[:query], page: params[:page], per_page: Product::PER_PAGE)
+      @products = Product.search(params[:query], page: params[:page], per_page: Product::PER_PAGE, order: 'created_at DESC')
     else
       @products = Product.includes(:images, :user).ordered.page(params[:page]).per(Product::PER_PAGE)
     end
