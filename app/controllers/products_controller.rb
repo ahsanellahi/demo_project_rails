@@ -48,6 +48,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
+    current_order.update_order_totals
     flash[:danger] = "Product destroyed successfully!"
     redirect_to users_dashboard_path
   end
