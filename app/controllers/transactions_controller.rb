@@ -1,5 +1,6 @@
 class TransactionsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :set_order_user!
   before_filter :check_cart!
 
   def new
@@ -31,5 +32,9 @@ class TransactionsController < ApplicationController
 
     def generate_client_token
       Braintree::ClientToken.generate
+    end
+
+    def set_order_user!
+      current_order.save
     end
 end
