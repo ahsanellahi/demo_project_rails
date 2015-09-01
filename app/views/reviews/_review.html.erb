@@ -5,7 +5,7 @@
   <div class="media-body">
     <h4 class="media-heading">
       <%= link_to user_full_name(review.user), user_page(review.user), class: 'btn-link' %>
-      <span class='text-muted'>(<%= review.created_at %>)</span>
+      <span class='text-muted'>(<%= display_time(review.created_at) %>)</span>
     </h4>
     <%= review.content %>
     <p class='pull-right'>
