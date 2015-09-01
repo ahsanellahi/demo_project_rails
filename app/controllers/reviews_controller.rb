@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   before_filter :set_review, only: [:show, :edit, :update, :destroy]
   before_filter :set_product
   before_filter :validate_before_destroy, only: :destroy
+  before_filter :validate_before_create, only: :create
 
   respond_to :html
 
@@ -23,7 +24,6 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    return if @product.user == current_user
     @review = @product.reviews.new(params[:review])
     @review.user = current_user
     @review.save
@@ -61,7 +61,11 @@ class ReviewsController < ApplicationController
       @product = Product.find(params[:product_id])
     end
 
+    def validate_before_create
+      redirect_to @product if valid_user?(@product.user)
+    end
+
     def validate_before_destroy
-      return false unless current_user == @review.user || current_user == @product.user
+      redirect_to @product unless valid_user?(@product.user) || valid_user?(@review.user)
     end
 end

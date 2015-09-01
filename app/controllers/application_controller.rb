@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
     end
     @current_order
   end
+
+  def valid_user? user
+    user == current_user
+  end
 end

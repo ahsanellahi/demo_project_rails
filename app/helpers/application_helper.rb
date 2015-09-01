@@ -1,4 +1,7 @@
 module ApplicationHelper
+  def valid_user? user
+    user == current_user
+  end
 
   def user_page user
     user == current_user ? users_dashboard_path : users_show_path(user)
