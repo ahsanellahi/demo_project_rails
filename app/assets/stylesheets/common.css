@@ -6,12 +6,23 @@ html, body {
   color: #fff;
 }
 
-.thumbnail {
+#index-products .thumbnail {
   width: 100%;
   float: left;
--webkit-box-shadow: 0 5px 15px #777;
-  -moz-box-shadow: 0 5px 15px #777;
-  box-shadow: 0 5px 15px #777;
+  -webkit-transition-duration: .5s;
+  -moz-transition-duration: .5s;
+  -o-transition-duration: .5s;
+  transition-duration: .5s;
+  transition: all 0.5s ease;
+  -webkit-box-shadow: 0px 0px 31px -13px rgba(0,0,0,0.40);
+  -moz-box-shadow: 0px 0px 31px -13px rgba(0,0,0,0.40);
+  box-shadow: 0px 0px 31px -13px rgba(0,0,0,0.40);
+}
+
+#index-products .thumbnail:hover {
+  -webkit-box-shadow: 0 14px 15px 0 rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 14px 15px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 14px 15px 0 rgba(0,0,0,0.2);
 }
 
 .img-container {
