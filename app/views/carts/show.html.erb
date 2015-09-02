@@ -1,8 +1,9 @@
 <div class="page-header">
   <h1>Shopping Cart
-    <%= link_to 'Show Product', root_path, class: "btn btn-primary active right", type: 'button'%>
+    <%= link_to 'Show All Product', root_path, class: "btn btn-primary active", type: 'button'%>
   </h1>
 </div>
+
 <div class="row">
   <div class="col-lg-8">
     <div class="shopping-cart">
@@ -12,7 +13,7 @@
 
   <% if current_order_has_products? %>
     <div class="col-lg-4" id='checkout-container'>
-      <div class="panel panel-default">
+      <div class="panel panel-default shadow">
         <div class='panel-heading'>
           <h4><strong>Checkout</strong></h4>
         </div>

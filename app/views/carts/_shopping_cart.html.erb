@@ -8,11 +8,13 @@
   </div>
 <% end %>
 <% if current_order.order_items.count == 0 %>
-  <p class="text-center">
-    There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
+  <p id='empty-cart-text'>
+    <span>There are no items in your shopping cart.  Please go to </span>
+    <i><%= link_to "Products", root_path, class: 'btn-link' %></i>
+    <span> and add some items to your cart.</span>
   </p>
 <% else %>
-      <div class="panel-group">
+      <div class="panel-group shadow">
         <div class="panel panel-primary">
           <div class="panel-body">
             <table class="table">
@@ -32,6 +34,9 @@
                 <% end %>
               </tbody>
             </table>
+            <p class='text-center' id='add-more-cart-btn'>
+              <%= link_to "Add More Products", root_path, class: 'btn btn-primary btn-lg' %>
+            </p>
           </div>
         </div>
       </div>
