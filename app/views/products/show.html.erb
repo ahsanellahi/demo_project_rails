@@ -1,7 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <div class="page-header">
-  <h1><%= @product.title.titleize %>
+  <h1>
+    <%= @product.title.titleize %>
+    <% if product_in_cart?(@product) %>
+      <%= link_to "Add to Cart", nil, class: "btn btn-primary disabled", id: "already-in-cart-#{@product.id}", type: 'button' %>
+    <% else %>
+      <%= form_for @order_item, remote: true do |f| %>
+        <%= f.hidden_field :product_id, value: @product.to_param %>
+        <%= f.submit "Add to Cart", class: "btn btn-primary", id: "add-to-cart-#{@product.id}" %>
+      <% end %>
+    <% end %>
     <%= link_to 'Edit Product', edit_product_path(@product), class: 'btn btn-primary' if is_owner_and_signed_in?(@owner) %>
     <%= link_to products_path, class: 'btn btn-primary' do %>
       <i class="fa fa-arrow-left"></i>
@@ -46,18 +55,18 @@
             </h4>
           </div>
           <div class="panel-body">
-            <p><strong>Description: </strong><%= @product.body %></p>
-            <p><strong>Price: <span class='text-danger'><%= number_to_currency(@product.price) %></span></strong></p>
-            <p><strong>Seller: </strong><%= link_to user_full_name(@product.user), user_page(@product.user), class: "btn-link"%></p>
+            <h4><%= @product.body %></h4>
+            <h4 class='drop-down'><strong><span class='text-danger drop-down'><%= number_to_currency(@product.price) %></span></strong></h4>
+            <h5 class='drop-down'><strong>Seller: </strong><%= link_to user_full_name(@product.user), user_page(@product.user), class: "btn-link"%></h5>
             <p>
               <% if product_in_cart?(@product) %>
-              <%= link_to "Add to Cart", nil, class: "btn btn-primary disabled", id: "already-in-cart-#{@product.id}", type: 'button' %>
-            <% else %>
-              <%= form_for @order_item, remote: true do |f| %>
-                <%= f.hidden_field :product_id, value: @product.to_param %>
-                <%= f.submit "Add to Cart", class: "btn btn-primary", id: "add-to-cart-#{@product.id}" %>
+                <%= link_to "Add to Cart", nil, class: "btn btn-primary btn-lg drop-down disabled", id: "already-in-cart-#{@product.id}", type: 'button' %>
+              <% else %>
+                <%= form_for @order_item, remote: true do |f| %>
+                  <%= f.hidden_field :product_id, value: @product.to_param %>
+                  <%= f.submit "Add to Cart", class: "btn btn-primary btn-lg drop-down", id: "add-to-cart-#{@product.id}" %>
+                <% end %>
               <% end %>
-            <% end %>
             </p>
           </div>
         </div>
@@ -71,7 +80,11 @@
         <div class="panel-heading"><h4><strong>Reviews</strong></h4></div>
         <div class="panel-body">
           <div id='reviews-section'>
-            <%= render 'reviews/reviews', reviews: @reviews, product: @product %>
+            <% if @reviews.present? %>
+              <%= render 'reviews/reviews', reviews: @reviews, product: @product %>
+            <% else %>
+              <p class='text-center'><strong>No reviews, yet!</strong></p>
+            <% end %>
 
             <div id="review-update-form"></div>
 
