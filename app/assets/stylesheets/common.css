@@ -228,3 +228,12 @@ html, body {
 a:hover {
   text-decoration: none !important;
 }
+
+.carousel-inner {
+  height: 600px;
+}
+
+#myCarousel .carousel-inner img {
+  width: 100%;
+  max-width: 100%;
+}
