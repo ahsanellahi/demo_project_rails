@@ -1,5 +1,13 @@
 <div class="page-header">
-  <h1><%= user_full_name(@user) %></h1>
+  <h1>
+    <%= user_full_name(@user) %>
+    <% if user_signed_in? %>
+      <%= link_to new_product_path, class: "btn btn-primary active right", type: 'button' do %>
+        <i class="fa fa-plus-circle"></i>
+        New Product
+      <% end %>
+    <% end %>
+  </h1>
 </div>
 <div>
   <h2><span class="label label-primary">Products</span></h2>
