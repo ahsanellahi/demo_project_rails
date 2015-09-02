@@ -227,6 +227,7 @@ html, body {
 
 a:hover {
   text-decoration: none !important;
+  background-color: transparent !important;
 }
 
 .carousel-inner {
@@ -236,4 +237,13 @@ a:hover {
 #myCarousel .carousel-inner img {
   width: 100%;
   max-width: 100%;
+}
+
+.i-padding {
+  padding: 10px;
+  border-radius: 100%;
+}
+
+.i-font-size {
+  font-size: 150% !important;
 }

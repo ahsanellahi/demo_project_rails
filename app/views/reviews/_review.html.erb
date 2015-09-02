@@ -10,10 +10,18 @@
     <%= review.content %>
     <p class='pull-right'>
       <% if valid_user?(review.user) %>
-        <%= link_to "Edit", edit_product_review_path(product, review), remote: true, class: 'btn btn-info' %>
-        <%= link_to "Remove", [product, review], method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'btn btn-danger' %>
+        <%= link_to edit_product_review_path(product, review), remote: true do %>
+          <i class="fa fa-pencil i-padding i-font-size btn-info"></i>
+        <% end %>
+        <%= link_to [product, review], method: :delete, data: { confirm: 'Are you sure?' }, remote: true do %>
+          <i class="fa fa-trash i-padding i-font-size btn-danger"></i>
+        <% end %>
       <% end %>
-        <%= link_to "Remove", [product, review], method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'btn btn-danger' if valid_user? @owner %>
+      <% if valid_user? @owner %>
+        <%= link_to [product, review], method: :delete, data: { confirm: 'Are you sure?' }, remote: true do %>
+          <i class="fa fa-trash i-padding i-font-size btn-danger"></i>
+        <% end %>
+      <% end %>
     </p>
   </div>
 </div>
