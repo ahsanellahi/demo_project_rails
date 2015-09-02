@@ -213,3 +213,7 @@ html, body {
   border-color: #d6e9c6;
   color: #468847;
 }
+
+a:hover {
+  text-decoration: none !important;
+}
