@@ -3,7 +3,9 @@
   <% reviews.each do |review| %>
     <div class="panel-group">
       <div class="panel panel-default">
-        <div class="panel-heading"><h4><strong>Product: <%= link_to review.product.title.titleize, review.product, class: 'btn btn-default' %></strong></h4></div>
+        <div class="panel-heading">
+          <h4><strong><%= link_to review.product.title.titleize, review.product, class: 'btn btn-default' %></strong></h4>
+        </div>
         <div class="panel-body">
           <%= render 'reviews/review', review: review, product: review.product %>
         </div>

@@ -247,3 +247,11 @@ a:hover {
 .i-font-size {
   font-size: 150% !important;
 }
+
+#user-reviews {
+  display: none;
+}
+
+#user-products-id, #user-reviews-id {
+  cursor: pointer;
+}

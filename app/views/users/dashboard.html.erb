@@ -9,13 +9,15 @@
     <% end %>
   </h1>
 </div>
-<div>
-  <h2><span class="label label-primary">Products</span></h2>
+
+<h2>
+  <span class="label label-default" id='user-products-id'>Products</span>
+  <span class="label label-primary" id='user-reviews-id'>Reviews</span>
+</h2>
+<div id='user-products'>
   <%= render '/products/user_products', products: @products %>
 </div>
-<div>
-  <% if is_owner_and_signed_in? @user %>
-    <h2><span class="label label-primary">Reviews</span></h2>
-    <%= render '/reviews/user_reviews', reviews: @reviews %>
-  <% end %>
+
+<div id='user-reviews'>
+  <%= render '/reviews/user_reviews', reviews: @reviews %>
 </div>
