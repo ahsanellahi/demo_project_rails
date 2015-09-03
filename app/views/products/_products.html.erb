@@ -8,9 +8,9 @@
   <% products.each do |product| %>
     <div class="col-lg-4">
       <div class="thumbnail">
-        <a href='<%= product_path(product) %>'>
+        <%= link_to product_path(product) do %>
           <%= image_tag(get_product_image_url(product.images.first, :original), class: 'img-container') %>
-        </a>
+        <% end %>
         <div class="caption">
           <h2><%= product.title.titleize %></h2>
           <h3><%= number_to_currency(product.price) %></h3>

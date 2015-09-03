@@ -1,7 +1,7 @@
 <div class="media" id="review_<%= review.id %>">
-  <a class="pull-left a-hover-transparent" href="<%= user_page(review.user) %>">
+  <%= link_to user_page(review.user), class: 'pull-left a-hover-transparent' do %>
     <%= image_tag(get_user_image_url(review.user), class: 'media-object img-rounded a-hover-transparent') %>
-  </a>
+  <% end %>
   <div class="media-body">
     <h4 class="media-heading">
       <%= link_to user_full_name(review.user), user_page(review.user), class: 'btn-link a-hover-transparent' %>
