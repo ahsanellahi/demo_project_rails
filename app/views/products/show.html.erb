@@ -11,7 +11,7 @@
         <%= f.submit "Add to Cart", class: "btn btn-primary", id: "add-to-cart-#{@product.id}" %>
       <% end %>
     <% end %>
-    <%= link_to 'Edit Product', edit_product_path(@product), class: 'btn btn-primary' if is_owner_and_signed_in?(@owner) %>
+    <%= link_to 'Edit Product', edit_product_path(@product), class: 'btn btn-primary' if owner?(@owner) %>
     <%= link_to products_path, class: 'btn btn-primary' do %>
       <i class="fa fa-arrow-left"></i>
       Back
