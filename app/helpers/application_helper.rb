@@ -13,6 +13,8 @@ module ApplicationHelper
 
   def apply_discount order
     order[:total] = (order[:subtotal] * 0.9).ceil
+    order.save
+    order[:total]
   end
 
   def current_order_has_products?
