@@ -1,3 +1,4 @@
 $('#reviews').append("<%= raw escape_javascript(render @review, product: @product) %>");
 $('#new_review')[0].reset();
+$('#no-review').hide();
 $("#notice").html("<%= escape_javascript(render 'layouts/flash', flash: flash).html_safe %>");

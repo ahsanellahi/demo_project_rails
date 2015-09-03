@@ -80,10 +80,10 @@
         <div class="panel-heading"><h4><strong>Reviews</strong></h4></div>
         <div class="panel-body">
           <div id='reviews-section'>
-            <% if @reviews.present? %>
-              <%= render 'reviews/reviews', reviews: @reviews, product: @product %>
-            <% else %>
-              <div class='text-center p-tag'><strong>No reviews, yet!</strong></div>
+            <%= render 'reviews/reviews', reviews: @reviews, product: @product %>
+
+            <% unless @reviews.present? %>
+              <div class='text-center p-tag' id='no-review'><strong>No reviews, yet!</strong></div>
             <% end %>
 
             <div id="review-update-form"></div>
