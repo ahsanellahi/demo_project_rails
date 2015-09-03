@@ -7,7 +7,7 @@ class Order < ActiveRecord::Base
   belongs_to :user
 
   def calculate_subtotal
-    self.products.collect{ |product| product.valid? ? product.price : 0 }.sum
+    self.products.select(&:persisted?).sum(&:price)
   end
 
   def update_order_totals
