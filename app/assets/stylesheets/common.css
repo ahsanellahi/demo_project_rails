@@ -227,6 +227,9 @@ html, body {
 
 a:hover {
   text-decoration: none !important;
+}
+
+.a-hover-transparent {
   background-color: transparent !important;
 }
 

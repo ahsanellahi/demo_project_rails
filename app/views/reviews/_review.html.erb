@@ -1,24 +1,24 @@
 <div class="media" id="review_<%= review.id %>">
-  <a class="pull-left" href="<%= user_page(review.user) %>">
-    <%= image_tag(get_user_image_url(review.user), class: 'media-object img-rounded') %>
+  <a class="pull-left a-hover-transparent" href="<%= user_page(review.user) %>">
+    <%= image_tag(get_user_image_url(review.user), class: 'media-object img-rounded a-hover-transparent') %>
   </a>
   <div class="media-body">
     <h4 class="media-heading">
-      <%= link_to user_full_name(review.user), user_page(review.user), class: 'btn-link' %>
+      <%= link_to user_full_name(review.user), user_page(review.user), class: 'btn-link a-hover-transparent' %>
       <span class='text-muted'>(<%= display_time(review.created_at) %>)</span>
     </h4>
     <%= review.content %>
     <p class='pull-right'>
       <% if valid_user?(review.user) %>
-        <%= link_to edit_product_review_path(product, review), remote: true do %>
+        <%= link_to edit_product_review_path(product, review), remote: true, class: 'a-hover-transparent' do %>
           <i class="fa fa-pencil i-padding i-font-size btn-info"></i>
         <% end %>
-        <%= link_to [product, review], method: :delete, data: { confirm: 'Are you sure?' }, remote: true do %>
+        <%= link_to [product, review], method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'a-hover-transparent' do %>
           <i class="fa fa-trash i-padding i-font-size btn-danger"></i>
         <% end %>
       <% end %>
       <% if valid_user? @owner %>
-        <%= link_to [product, review], method: :delete, data: { confirm: 'Are you sure?' }, remote: true do %>
+        <%= link_to [product, review], method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'a-hover-transparent' do %>
           <i class="fa fa-trash i-padding i-font-size btn-danger"></i>
         <% end %>
       <% end %>
