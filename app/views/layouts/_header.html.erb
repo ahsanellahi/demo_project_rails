@@ -1,0 +1,48 @@
+<nav class="navbar navbar-default" id="header-bar">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="<%= root_path %>"><strong><i>Shoppy</i></strong></a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="<%= root_path %>"><i class="fa fa-home"></i> Home</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="cart-text"><%= render 'layouts/cart_text' %></li>
+        <% unless user_signed_in? %>
+          <li>
+            <%= link_to new_user_session_path do %>
+              <i class="fa fa-sign-in"></i>
+              Sign In
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_registration_path do %>
+              <i class="fa fa-laptop"></i>
+              Register
+            <% end %>
+          </li>
+        <% else %>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-user"></i>
+              <%= user_full_name(current_user) %><span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="<%= users_dashboard_path %>"><i class="fa fa-archive"></i> Dashboard</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="<%= edit_user_registration_path %>"><i class="fa fa-cogs"></i> Edit Profile</a></li>
+            </ul>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fa fa-sign-out"></i>
+              Sign out
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
