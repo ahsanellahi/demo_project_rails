@@ -258,3 +258,7 @@ a:hover {
 #user-products-id, #user-reviews-id {
   cursor: pointer;
 }
+
+.p-tag {
+  margin: 0 0 10px;
+}

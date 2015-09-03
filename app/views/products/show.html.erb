@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<div class='p-tag' id="notice"><%= notice %></div>
 
 <div class="page-header">
   <h1>
@@ -58,7 +58,7 @@
             <h4><%= @product.body %></h4>
             <h4 class='drop-down'><strong><span class='text-danger drop-down'><%= number_to_currency(@product.price) %></span></strong></h4>
             <h5 class='drop-down'><strong>Seller: </strong><%= link_to user_full_name(@product.user), user_page(@product.user), class: "btn-link"%></h5>
-            <p>
+            <div class='p-tag'>
               <% if product_in_cart?(@product) %>
                 <%= link_to "Add to Cart", nil, class: "btn btn-primary btn-lg drop-down disabled", id: "already-in-cart-#{@product.id}", type: 'button' %>
               <% else %>
@@ -67,7 +67,7 @@
                   <%= f.submit "Add to Cart", class: "btn btn-primary btn-lg drop-down", id: "add-to-cart-#{@product.id}" %>
                 <% end %>
               <% end %>
-            </p>
+            </div>
           </div>
         </div>
       </div>
@@ -83,7 +83,7 @@
             <% if @reviews.present? %>
               <%= render 'reviews/reviews', reviews: @reviews, product: @product %>
             <% else %>
-              <p class='text-center'><strong>No reviews, yet!</strong></p>
+              <div class='text-center p-tag'><strong>No reviews, yet!</strong></div>
             <% end %>
 
             <div id="review-update-form"></div>
