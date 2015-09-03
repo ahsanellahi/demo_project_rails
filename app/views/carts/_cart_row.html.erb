@@ -9,7 +9,7 @@
   </td>
   <td><%= product.body %></td>
   <td><%= number_to_currency(product.price) %></td>
-  <td><%= link_to user_full_name(product.user), user_page(product.user) , class: "btn-link"%></td>
+  <td><%= link_to user_full_name(product.user), user_page(product.user) , class: "btn-link" %></td>
   <td>
     <%= form_for order_item, remote: true do |f| %>
       <%= link_to order_item, { data: { confirm: "Are you sure you wish to delete the product '#{order_item.product.title.titleize}' from your cart?" }, method: :delete, remote: true, class: "btn btn-danger", id: "btn-remove-cart"} do %>
