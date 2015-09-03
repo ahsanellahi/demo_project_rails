@@ -262,3 +262,7 @@ a:hover {
 .p-tag {
   margin: 0 0 10px;
 }
+
+#error_explanation {
+  width: 100% !important;
+}
