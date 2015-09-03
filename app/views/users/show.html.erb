@@ -12,5 +12,10 @@
 
 <div>
   <h2><span class="label label-primary">Products</span></h2>
-  <%= render '/products/user_products', products: @products %>
+  <div class='drop-down'>
+    <%= render '/products/user_products', products: @products %>
+    <% unless @products.present? %>
+      <p><%= user_full_name(@user) %> does not own any products.</p>
+    <% end %>
+  </div>
 </div>

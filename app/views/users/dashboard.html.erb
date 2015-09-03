@@ -14,10 +14,17 @@
   <span class="label label-default" id='user-products-id'>Products</span>
   <span class="label label-primary" id='user-reviews-id'>Reviews</span>
 </h2>
-<div id='user-products'>
+
+<div id='user-products' class='drop-down'>
   <%= render '/products/user_products', products: @products %>
+  <% unless @products.present? %>
+    <p>You don't own any products.</p>
+  <% end %>
 </div>
 
-<div id='user-reviews'>
+<div id='user-reviews' class='drop-down'>
   <%= render '/reviews/user_reviews', reviews: @reviews %>
+  <% unless @reviews.present? %>
+    <p>You did not give any review, yet.</p>
+  <% end %>
 </div>
