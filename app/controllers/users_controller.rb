@@ -2,9 +2,9 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, only: :dashboard
 
   def dashboard
-    @user = User.includes(products: [:reviews, :images]).includes(reviews: [:product]).find(current_user.id)
-    @reviews = @user.reviews.ordered.page(params[:review_page_number]).per(User::PER_PAGE)
-    @products = @user.products.ordered.page(params[:product_page_number]).per(User::PER_PAGE)
+    @user = current_user
+    @reviews = @user.reviews.includes(:product).ordered.page(params[:review_page_number]).per(User::PER_PAGE)
+    @products = @user.products.includes(:reviews, :images).ordered.page(params[:product_page_number]).per(User::PER_PAGE)
 
     respond_to do |format|
       format.js
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(products: [:reviews, :images]).find(params[:id])
-    @products = @user.products.ordered.page(params[:product_page_number]).per(User::PER_PAGE)
+    @user = User.find(params[:id])
+    @products = @user.products.includes(:reviews, :images).ordered.page(params[:product_page_number]).per(User::PER_PAGE)
   end
 end
